@@ -5,13 +5,22 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlatShop - Minimalist E-commerce</title>
+    <!-- Panggil SDK RealEye dulu -->
+    <script src="https://cdn.realeye.io/realeye-sdk.js"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Inisialisasi SDK setelah SDK dimuat -->
     <script>
-      RealEyeSDK.init("a9bac075-f024-4166-bf84-b30c3e12e04b");
+      window.onload = function () {
+        // Inisialisasi SDK RealEye setelah halaman dimuat
+        if (window.RealEyeSDK) {
+          RealEyeSDK.init("a9bac075-f024-4166-bf84-b30c3e12e04b");
+        } else {
+          console.error("RealEye SDK not detected!");
+        }
+      };
     </script>
-    <script src="https://cdn.realeye.io/realeye-sdk.js"></script>
   </body>
 </html>
